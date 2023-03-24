@@ -11,8 +11,6 @@ services:
             - start-dev
         healthcheck:
             test: curl -f localhost:8080 || exit 1
-#            test: curl -f https://www.google.com/?client=safari || exit 1
-#            test: echo "Smth"
             interval: 2s
             retries: 10
     service1:
