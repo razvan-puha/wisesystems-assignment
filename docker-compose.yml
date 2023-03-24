@@ -1,22 +1,35 @@
 version: "3.9"
 services:
-    service1:
-        build: ./service1/.
-        ports:
-            - "9000:9000"
-        environment:
-            - ISSUER_URL=http://localhost:8080/realms/Services
-    service2:
-        build: ./service2/.
-        ports:
-            - "9090:9090"
-        environment:
-            - ISSUER_URL=http://localhost:8080/realms/Services
     keycloak:
-        image: quay.io/keycloak/keycloak:latest
+        build: ./keycloak/.
         ports:
             - "8080:8080"
         environment:
             - KEYCLOAK_ADMIN=admin
             - KEYCLOAK_ADMIN_PASSWORD=admin
-
+        command:
+            - start-dev
+        healthcheck:
+            test: curl -f localhost:8080 || exit 1
+#            test: curl -f https://www.google.com/?client=safari || exit 1
+#            test: echo "Smth"
+            interval: 2s
+            retries: 10
+    service1:
+        build: ./service1/.
+        depends_on:
+            keycloak:
+                condition: service_healthy
+        ports:
+            - "9000:9000"
+        environment:
+            - ISSUER_URL=http://keycloak:8080/realms/Services
+    service2:
+        build: ./service2/.
+        depends_on:
+            keycloak:
+                condition: service_healthy
+        ports:
+            - "9090:9090"
+        environment:
+            - ISSUER_URL=http://keycloak:8080/realms/Services
