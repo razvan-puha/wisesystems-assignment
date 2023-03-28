@@ -1,6 +1,6 @@
 ## Keycloack configuration
 
-- Run the following command in your terminal: ```docker compose run -p 8080:8080 keycloak start-dev```
+- Run the following command in your terminal: ```docker compose up``` (this will create all the containers for the services, but we will use only the keycloak for now)
 - In your browser, go to [localhost](http://localhost:8080)
 - Go to '**Administration Console**'
 <br /><br />
@@ -57,4 +57,4 @@
 ![image](https://user-images.githubusercontent.com/11256106/226986998-af13a8a8-eb72-4d56-ab34-237027745001.png)
 ![image](https://user-images.githubusercontent.com/11256106/226987185-9fd928f9-63e7-4d23-b59c-db5fb334f138.png)
 
-- Close the docker container
+- Close the docker compose command to shut down the containers (we need to do this because we've modified the ```docker-compose.yml```; at the next start it will fetch the new env values)
