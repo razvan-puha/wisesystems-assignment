@@ -21,3 +21,11 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Others
+.idea
+service1/target
+service2/target
+docker-compose.generated.override.yml
+.DS_Store
+service1/.DS_Store

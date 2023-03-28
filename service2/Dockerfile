@@ -1,6 +1,3 @@
-FROM openjdk:17.0.1-jdk-slim
-VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
-
-EXPOSE 9090
+FROM maven:3.9.0-eclipse-temurin-17
+COPY . /project
+RUN cd project && mvn package

@@ -14,20 +14,34 @@ services:
             interval: 2s
             retries: 10
     service1:
-        build: ./service1/.
+        build:
+            context: service1
+            dockerfile: Dockerfile
         depends_on:
             keycloak:
+                condition: service_healthy
+            service2:
                 condition: service_healthy
         ports:
             - "9000:9000"
         environment:
-            - ISSUER_URL=http://keycloak:8080/realms/Services
+            - ISSUER_URL=http://keycloak:8080/realms/master
+            - PERSON_API_URL=http://service2:9090
+            - FEIGN_CLIENT_SECRET=jcyA5SRmRlWP4dLs25ACQkmYMg51WvAE
+        command: java -Djava.security.egd=file:/dev/./urandom -jar /project/target/service1-0.0.1-SNAPSHOT.jar
     service2:
-        build: ./service2/.
+        build:
+            context: service2
+            dockerfile: Dockerfile
         depends_on:
             keycloak:
                 condition: service_healthy
         ports:
             - "9090:9090"
         environment:
-            - ISSUER_URL=http://keycloak:8080/realms/Services
+            - ISSUER_URL=http://keycloak:8080/realms/master
+        command: java -Djava.security.egd=file:/dev/./urandom -jar /project/target/service2-0.0.1-SNAPSHOT.jar
+        healthcheck:
+            test: curl -f localhost:9090/v1/actuator/health || exit 1
+            interval: 2s
+            retries: 10

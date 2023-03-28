@@ -26,21 +26,22 @@ public class BankAccountService {
 
     public List<BankAccountDto> getBankAccounts() {
         return bankAccountRepository.findAll().stream()
-            .map(bankAccount -> {
-                PersonDto person = personClient.getPersonById(bankAccount.getPersonId());
-                return BankAccountDto.of(
-                    bankAccount.getId(),
-                    bankAccount.getCreatedOn(),
-                    person.getName(),
-                    person.getPersonalCode(),
-                    person.getEmail()
-                );
-            })
-            .toList();
+                .map(bankAccount -> {
+                    PersonDto person = personClient.getPersonById(bankAccount.getPersonId());
+                    return BankAccountDto.of(
+                            bankAccount.getId(),
+                            bankAccount.getCreatedOn(),
+                            person.getName(),
+                            person.getPersonalCode(),
+                            person.getEmail()
+                    );
+                })
+                .toList();
     }
 
     public void createBankAccount(PersonRequestBody requestBody) {
-        List<PersonDto> persons = personClient.getPersonsBy(requestBody.getName(), requestBody.getPersonalCode(), requestBody.getEmail());
+        List<PersonDto> persons = personClient.getPersonsBy(requestBody.getName(),
+                requestBody.getPersonalCode(), requestBody.getEmail());
         if (persons.size() != 1) {
             throw new TooManyResultsException("The search returned too many results! Please provide details to identify only a single person!");
         }
