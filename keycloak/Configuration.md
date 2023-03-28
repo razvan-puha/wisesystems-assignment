@@ -20,13 +20,25 @@
 ![image](https://user-images.githubusercontent.com/11256106/227913788-1f795826-c75e-4ad1-b5b2-78444f9cfddd.png)
 
 
-- Create the second client, named 'people-api', and also create a new role for it, called 'service' <br /><br />
+- Create the second client, named 'people-api', and configure it like in the screenshots <br /><br />
 ![image](https://user-images.githubusercontent.com/11256106/226293894-0413bff0-52af-4b6c-b80e-579a5fa24cb7.png)
-![image](https://user-images.githubusercontent.com/11256106/226293183-89974d79-4913-4fdd-ab24-6fa94ca2f74b.png)
+![image](https://user-images.githubusercontent.com/11256106/228242341-0b7d2b40-afe3-48ff-b147-1c7013dc1e45.png)
 ![image](https://user-images.githubusercontent.com/11256106/227914321-739e7df3-9489-4a30-97fa-15ff737ff7f6.png)
-![image](https://user-images.githubusercontent.com/11256106/227914529-bca19615-d5f0-43ea-91f1-084915b7da9f.png)
-![image](https://user-images.githubusercontent.com/11256106/227914599-faf55329-f8e1-41cc-b21c-7369e7af055c.png)
+
+- For 'people-api' client, add a new role, called 'service' <br /><br />
+![image](https://user-images.githubusercontent.com/11256106/228243498-0a05ef92-ae36-459e-bc1f-934258736a35.png)
+![image](https://user-images.githubusercontent.com/11256106/228243645-06ab3d5b-3c43-47f7-b434-616f6048b1bc.png)
 ![image](https://user-images.githubusercontent.com/11256106/227913788-1f795826-c75e-4ad1-b5b2-78444f9cfddd.png)
+
+- For the same client as above, assign the new created role to the service account <br /><br />
+![image](https://user-images.githubusercontent.com/11256106/228244067-c92532e8-1086-4440-8fe2-a8fa1afbaa77.png)
+![image](https://user-images.githubusercontent.com/11256106/228244222-1842dea2-f24e-47ec-b38d-a1bb22004748.png)
+![image](https://user-images.githubusercontent.com/11256106/228244354-3dd6aadc-7159-415f-be17-2c4841afd253.png)
+
+- Again, for 'people-api' client, go under 'Credentials' & copy the generated client secret & paste it in ```docker-compose.yml```, under ```service1.environment.FEIGN_CLIENT_SECRET``` <br /><br />
+![image](https://user-images.githubusercontent.com/11256106/228244881-b6b43ed5-aea8-4cb4-8a78-7ab6757da748.png)
+![image](https://user-images.githubusercontent.com/11256106/228245368-45270477-6b30-4de8-aeb3-703ca503636a.png)
+![image](https://user-images.githubusercontent.com/11256106/228245621-d34937cc-6714-490d-9127-a173f97d6895.png)
 
 - Under **Realm roles**, create a new role named '**service**'<br /><br />
 ![image](https://user-images.githubusercontent.com/11256106/226295008-9b9c5c33-eee3-4885-a504-dbc2f948647f.png)
