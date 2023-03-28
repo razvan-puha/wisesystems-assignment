@@ -1,4 +1,4 @@
-package co.wisesystems.demo.service1.config;
+package co.wisesystems.demo.service1.client.config;
 
 import feign.RequestInterceptor;
 import lombok.AccessLevel;
@@ -30,7 +30,7 @@ public class OAuthFeignConfig {
     }
 
     @Bean
-    OAuth2AuthorizedClientManager authorizedClientManager() {
+    public OAuth2AuthorizedClientManager authorizedClientManager() {
         OAuth2AuthorizedClientProvider authorizedClientProvider = OAuth2AuthorizedClientProviderBuilder.builder()
                 .clientCredentials()
                 .build();

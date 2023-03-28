@@ -1,4 +1,4 @@
-package co.wisesystems.demo.service1.config;
+package co.wisesystems.demo.service1.client.config;
 
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
