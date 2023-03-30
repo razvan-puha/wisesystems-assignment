@@ -19,12 +19,18 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http.authorizeHttpRequests()
+//                .requestMatchers("/bank_accounts**").hasRole("service")
+//                .anyRequest().authenticated()
+//        ;
+        http.csrf().disable();
+
         http.authorizeHttpRequests()
-            .requestMatchers("/bank_accounts**").hasRole("service")
-            .anyRequest().authenticated();
+                .requestMatchers("/bank_accounts**").permitAll();
+
         http.oauth2ResourceServer()
-            .jwt()
-            .jwtAuthenticationConverter(jwtAuthConverter);
+                .jwt()
+                .jwtAuthenticationConverter(jwtAuthConverter);
 
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         return http.build();

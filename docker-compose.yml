@@ -27,7 +27,7 @@ services:
         environment:
             - ISSUER_URL=http://keycloak:8080/realms/master
             - PERSON_API_URL=http://service2:9090
-            - FEIGN_CLIENT_SECRET=fPsnxTCuNrDm9hiL7ZNCDstALSNDbod8
+            - FEIGN_CLIENT_SECRET=zkF1aL6LvoVXnPDG3AAflN8K6Bt8IKAa
         command: java -Djava.security.egd=file:/dev/./urandom -jar /project/target/service1-0.0.1-SNAPSHOT.jar
     service2:
         build:
